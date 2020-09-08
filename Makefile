@@ -11,7 +11,7 @@ docker/login:
 	echo $(secrets.CR_TOKEN) | docker login ghcr.io -u ludviglundgren --password-stdin
 
 docker/build:
-	docker build -f Dockerfile -t $(GHCR_REPO) .
+	docker build -f Dockerfile -t $(GHCR_COMMIT_TAG) .
 
 docker/build/dev:
 	docker build -f Dockerfile -t $(GHCR_REPO):dev .
