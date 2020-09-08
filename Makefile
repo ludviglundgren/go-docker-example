@@ -4,7 +4,7 @@ build:
 	go build -o bin/server cmd/main.go
 
 docker/login:
-	cat $(GITHUB_TOKEN) | docker login docker.pkg.github.com -u ludviglundgren --password-stdin
+	cat $(GH_TOKEN) | docker login docker.pkg.github.com -u ludviglundgren --password-stdin
 
 docker/build:
 	docker build -f Dockerfile -t $(IMAGE_REPO):latest .
