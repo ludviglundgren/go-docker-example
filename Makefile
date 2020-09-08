@@ -1,5 +1,5 @@
 GHCR_REPO=ghcr.io/ludviglundgren/go-docker-example
-GHCR_COMMIT_TAG=$(GHCR_REPO):commit-$(SHA)
+GHCR_COMMIT_TAG=$(GHCR_REPO):commit-$(GITHUB_SHA)
 VALID_TAG=$(shell echo $(TAG_NAME) | sed 's/[^a-z0-9_\.-]/-/g')
 
 build:

@@ -17,12 +17,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    # - name: Variables
-    #   env:
-    #     PR_NUMBER: ${{ github.event.number }}
-    #     SHA: ${{ github.sha }}
-    #   run: echo "$PR_NUMBER"
-
     - name: Build the Docker image
       run: make docker/build
 
