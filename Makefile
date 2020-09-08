@@ -12,5 +12,5 @@ docker/build:
 docker/build/dev:
 	docker build -f Dockerfile -t $(IMAGE_REPO):dev .
 
-docker/push:
+docker/push: docker/login
 	docker push $(IMAGE_REPO):latest
