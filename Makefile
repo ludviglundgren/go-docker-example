@@ -9,5 +9,8 @@ docker/login:
 docker/build:
 	docker build -f Dockerfile -t $(IMAGE_REPO):latest .
 
+docker/build/dev:
+	docker build -f Dockerfile -t $(IMAGE_REPO):dev .
+
 docker/push:
 	docker push $(IMAGE_REPO):latest
