@@ -21,8 +21,7 @@ jobs:
       env:
         PR_NUMBER: ${{ github.event.number }}
         SHA: ${{ github.sha }}
-    - run: echo $PR_NUMBER
-    - run: echo $SHA
+      run: echo $PR_NUMBER
 
     - name: Build ctx env
       run: env
