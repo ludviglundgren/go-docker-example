@@ -10,20 +10,36 @@ on:
 
 jobs:
 
-  build:
-
+  build-and-publish-latest:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' # Running this job only for master branch
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Variables
+      env:
+        PR_NUMBER: ${{ github.event.number }}
+        SHA: ${{ github.sha }}
+    - run: echo $PR_NUMBER
+    - run: echo $SHA
+
+    - name: Build ctx env
+      run: env
+
     - name: Build the Docker image
       run: make docker/build
+
+    - name: Build the Docker image
+      run: make docker/tag TAG_NAME=latest
+
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v1
       with:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
         password: ${{ secrets.CR_TOKEN }}
+
     - name: Push the Docker image
       run: make docker/push
 
